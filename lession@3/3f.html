@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>react 01 question</title>
+</head>
+<body>
+    <div class="js-container"></div>
+
+    <script src="https://unpkg.com/supersimpledev/react.js"></script>
+    <script src="https://unpkg.com/supersimpledev/react-dom.js"></script>
+
+    <script src="https://unpkg.com/supersimpledev/babel.js"></script>
+    <script type="text/babel">
+    
+    function InputBox({textItem,setTextItem}){
+
+        const [textMessage,setTextMessage]=React.useState([]);
+        function inputChange(event){
+            setTextMessage(event.target.value)
+        }
+        function addBtn(){
+            setTextItem(textMessage)
+            textMessage=''
+        }
+        return(
+            <>
+            <input
+             onChange={inputChange}
+             type="text" placeholder='Enter Your Name' size='30'  
+             />
+            <button onClick={addBtn}>add</button>
+            </>
+        )
+    }
+    function App(){
+       const [textItem,setTextItem]=React.useState('');
+        return(
+            <>
+              <InputBox
+                textItem={textItem}
+                setTextItem={setTextItem}
+              />
+              <p>{textItem}</p>
+            </>
+        )
+      }
+
+      const container = document.querySelector('.js-container');
+      ReactDOM.createRoot(container).render(<App />);
+      </script>
+</body>
+</html>
