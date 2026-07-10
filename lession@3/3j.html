@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>react 01 question</title>
+</head>
+<body>
+    <div class="js-container"></div>
+
+    <script src="https://unpkg.com/supersimpledev/react.js"></script>
+    <script src="https://unpkg.com/supersimpledev/react-dom.js"></script>
+
+    <script src="https://unpkg.com/supersimpledev/babel.js"></script>
+    <script type="text/babel">
+    
+   //using esc btn remove text from input
+    function App(){
+        const [input,setInput] = React.useState('');
+        const [messages, setMessages] = React.useState([]);
+
+       function inputBox(event){
+        setInput(event.target.value);
+       }
+       function sendBtn(){
+        if(input ==='')return;
+        setMessages([...messages,input])
+        setInput('')
+        
+        
+       }
+       function handleKey(event){
+        if(event.key ==='Enter'){
+            sendBtn()
+        }
+        if(event.key==='Escape'){
+            setInput('')
+        }
+       }
+        return(
+            <>
+              <input
+               onChange={inputBox} type="text" placeholder='enter something' size='30'
+               onKeyDown={handleKey}
+               value={input}
+               />
+              <button onClick={sendBtn}>send</button>
+              
+              {
+                messages.map((messages)=>{
+                    return <p>{messages}</p>
+                })
+              }
+              
+            </>
+        )
+      }
+
+      const container = document.querySelector('.js-container');
+      ReactDOM.createRoot(container).render(<App />);
+      </script>
+</body>
+</html>
