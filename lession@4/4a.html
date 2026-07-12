@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>react 01 question</title>
+    <style>
+        .btn{
+            background-color: rgb(25,135,84);
+            border: none;
+            color: white;
+            border-radius: 15px;
+            font-family: Arial;
+            font-size: 100px;
+            padding: 20px 50px;
+            margin-right: 10px;
+        }
+        .on-off-btn{
+            background-color: rgb(25,135,84);
+            border: none;
+            color: white;
+            border-radius: 15px;
+            font-family: Arial;
+            font-size: 100px;
+            padding: 20px 50px;
+            margin-right: 10px;
+        }
+        .change-color{
+            Background-color: rgb(25,135,84);
+            border: none;
+            color: white;
+            border-radius: 15px;
+            font-family: Arial;
+            font-size: 100px;
+            padding: 20px 50px;
+            margin-right: 10px;
+        }
+        .onn-button{
+            Background-color: rgb(25,135,84);
+            border: none;
+            color: white;
+            border-radius: 15px;
+            font-family: Arial;
+            font-size: 100px;
+            padding: 20px 50px;
+            margin-right: 10px;
+        }
+        .off-button{
+            Background-color: rgb(255, 0, 0);
+            border: none;
+            color: white;
+            border-radius: 15px;
+            font-family: Arial;
+            font-size: 100px;
+            padding: 20px 50px;
+            margin-right: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="js-container"></div>
+
+    <script src="https://unpkg.com/supersimpledev/react.js"></script>
+    <script src="https://unpkg.com/supersimpledev/react-dom.js"></script>
+
+    <script src="https://unpkg.com/supersimpledev/babel.js"></script>
+    <script type="text/babel">
+
+     function App(){
+        const [text,setText] = React.useState('OFF');
+        function changeText(){
+            setText(text==='OFF'?'ONN':'OFF')
+        }
+
+        const [color,setColor] = React.useState(true)
+        function changeColor(){
+            setColor(color===true?false:true)
+        }
+        return(
+            <>
+                <button 
+                    className='btn'
+                >ON</button>
+
+                <button 
+                    onClick={changeText} 
+                    className='on-off-btn'
+                >{text}</button>
+
+                <button 
+                onClick={changeColor}
+                className={color?'onn-button':'off-button'}
+                >
+                {color?'onn':'off'}
+                </button>
+            </>
+        )
+     }
+
+      const container = document.querySelector('.js-container');
+      ReactDOM.createRoot(container).render(<App />);
+
+
+    </script>
+</body>
+</html>
