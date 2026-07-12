@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>react 01 question</title>
+    <style>
+        body{
+            font-family: Arial;
+        }
+        button{
+            background-color: rgb(3, 66, 255);
+            border: none;
+            margin-right: 5px;
+            margin-top: 2px;
+            border-radius: 3px;
+            color: white;
+            padding: 5px 8px;
+            cursor: pointer;
+
+        }
+        
+        .inputBox{
+             margin-bottom: 5px;
+            border-radius: 3px;
+            border:0.1px solid black;
+            height: 22px;
+            margin-right: 5px;
+        }
+       
+    </style>
+</head>
+<body>
+    <div class="js-container"></div>
+
+    <script src="https://unpkg.com/supersimpledev/react.js"></script>
+    <script src="https://unpkg.com/supersimpledev/react-dom.js"></script>
+
+    <script src="https://unpkg.com/supersimpledev/babel.js"></script>
+    <script type="text/babel">
+      
+      function App(){
+        const [show,setSow] = React.useState(true)
+        const [inpt,setInpt] = React.useState(false);
+        function toggle(){
+            setSow(show?false:true)
+            setInpt(inpt?true:false)
+        }
+        return(
+            <>
+                <h2>Hello, Welcome to My Website</h2>
+                <div><input
+                     type="text" 
+                     placeholder="Email"
+                     className="inputBox"
+                     /> </div>
+                <div><input 
+                    type={show?'password':'text'} 
+                    placeholder='Password'
+                    className="inputBox"
+                    />
+                    <button onClick={toggle} className='togle-btn'>{show?'Show':'Hide'}</button>
+                </div>
+                <button>Login</button>
+                <button>Sign up</button>
+            </>
+        )
+      }
+
+      const container = document.querySelector('.js-container');
+      ReactDOM.createRoot(container).render(<App />);
+      </script>
+</body>
+</html>
